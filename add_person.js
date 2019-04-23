@@ -20,9 +20,6 @@ knex('famous_people').insert({
   'last_name': lastName,
   'birthdate': birthDate
 })
-.asCallback((err) => {
-  if (err) {
-    console.log(err)
-  }
-  console.log("inserted")
+.finally(function() {
+  knex.destroy();
 });
